@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mini Demo</title>
+    <style>
+        :root {
+            --bg: #fff;
+            --txt: #000;
+            --btn: #09f;
+        }
+        
+        body.dark {
+            --bg: #000;
+            --txt: #fff;
+            --btn: #0af;
+        }
+        
+        body {
+            background: var(--bg);
+            color: var(--txt);
+            font-family: Arial;
+            padding: 20px;
+            transition: 0.3s;
+        }
+        
+        button {
+            background: var(--btn);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        
+        nav a {
+            color: var(--txt);
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        input {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            width: 250px;
+        }
+        
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- Dark Mode Toggle Button -->
+    <button onclick="toggleDark()">
+        🌙 Dark
+    </button>
+    
+    <!-- Navigation Links -->
+    <nav>
+        <a href="#form">Form</a>
+        <a href="#bottom">Bottom</a>
+    </nav>
+    
+    <h1>Mini Magic!</h1>
+
+    <!-- Form Section -->
+    <section id="form" style="margin-top: 200px;">
+        <h2>Form</h2>
+        <form onsubmit="return validateForm()">
+            <input id="email" type="email" placeholder="Email">
+            <span id="error" class="error"></span>
+            <input id="password" type="password" placeholder="Pass" minlength="6">
+            <button>Send</button>
+        </form>
+    </section>
+
+    <!-- Bottom Section -->
+    <div id="bottom" style="height: 100vh;">
+        End!
+    </div>
+
+    <script>
+        let isDark = false;
+        
+        function toggleDark() {
+            isDark = !isDark;
+            document.body.classList.toggle('dark', isDark);
+            event.target.innerHTML = isDark ? '☀️ Light' : '🌙 Dark';
+        }
+        
+        function validateForm() {
+            const email = document.getElementById('email').value;
+            if (!email.includes('@')) {
+                document.getElementById('error').innerHTML = 'Needs @!';
+                return false;
+            }
+            alert('Good!');
+            return false;
+        }
+    </script>
+</body>
+</html>
