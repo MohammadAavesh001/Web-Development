@@ -9,14 +9,25 @@
             --bg: #fff;
             --txt: #000;
             --btn: #09f;
+            --title:rgb(212, 11, 11);
         }
         
         body.dark {
             --bg: #000;
             --txt: #fff;
-            --btn: #0af;
+            --btn: rgb(0, 255, 64);
+            --title:rgb(26, 46, 24);
         }
         
+        header {
+            background: var(--bg);
+            color: var(--txt);
+            background-color: var(--title);
+            text-align: center;
+            transition: 0.3s;
+            padding: 50px 20px;
+        }
+
         body {
             background: var(--bg);
             color: var(--txt);
@@ -28,9 +39,13 @@
         button {
             background: var(--btn);
             color: #fff;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
+            cursor: pointer;  
+            padding: 18px 20px; 
+            width: 300px;
+            text-align: left;      
+            font-size: 18px;    
+            border: 2px solid #ccc;
+            border-radius: 8px;
         }
         
         nav a {
@@ -43,34 +58,50 @@
             scroll-behavior: smooth;
         }
         
+        /* FORM CENTER + BIGGER */
+        #form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
         input {
             display: block;
-            margin: 10px 0;
-            padding: 10px;
-            width: 250px;
+            margin: 15px 0;    
+            padding: 18px 20px; 
+            width: 350px;       
+            font-size: 18px;    
+            border: 2px solid #ccc;
+            border-radius: 8px;
+        }
+        
+        #form button {
+            margin-top: 10px;
+            padding: 18px 40px; 
+            font-size: 18px;
+            border-radius: 8px;
+            width: 350px;       
         }
         
         .error {
             color: red;
+            font-size: 16px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
-    <!-- Dark Mode Toggle Button -->
-    <button onclick="toggleDark()">
+    
+    
+    
+    <header><button onclick="toggleDark()">
         🌙 Dark
-    </button>
-    
-    <!-- Navigation Links -->
-    <nav>
-        <a href="#form">Form</a>
-        <a href="#bottom">Bottom</a>
-    </nav>
-    
-    <h1>Mini Magic!</h1>
+    </button><h1>Mini Magic!</h1></header>
 
-    <!-- Form Section -->
-    <section id="form" style="margin-top: 200px;">
+    <section id="form">
         <h2>Form</h2>
         <form onsubmit="return validateForm()">
             <input id="email" type="email" placeholder="Email">
@@ -79,11 +110,6 @@
             <button>Send</button>
         </form>
     </section>
-
-    <!-- Bottom Section -->
-    <div id="bottom" style="height: 100vh;">
-        End!
-    </div>
 
     <script>
         let isDark = false;
